@@ -1,22 +1,24 @@
-import Header from "../Header";
-import NotesArea from "../NotesArea/NotesArea";
-import Sidebar from "../Sidebar";
-
+import React from "react";
 import styled from "styled-components";
 
+import Header from "../Header";
+import NotesArea from "../NotesArea";
+import Sidebar from "../Sidebar";
+
 function App() {
+  const [editing, setEditing] = React.useState(true);
   return (
-      <Wrapper>
-        <HeaderWrapper>
-          <Header />
-        </HeaderWrapper>
-        <SidebarWrapper>
-          <Sidebar />
-        </SidebarWrapper>
-        <NotesWrapper>
-          <NotesArea />
-        </NotesWrapper>
-      </Wrapper>
+    <Wrapper>
+      <HeaderWrapper>
+        <Header editing={editing} setEditing={setEditing} />
+      </HeaderWrapper>
+      <SidebarWrapper>
+        <Sidebar />
+      </SidebarWrapper>
+      <NotesWrapper>
+        <NotesArea editing={editing} />
+      </NotesWrapper>
+    </Wrapper>
   );
 }
 
