@@ -7,13 +7,18 @@ import Sidebar from "../Sidebar";
 
 function App() {
   const [editing, setEditing] = React.useState(true);
+
+  const [documents, setDocuments] = React.useState([
+    { name: "Document 1", id: 1 },
+  ]);
+
   return (
     <Wrapper>
       <HeaderWrapper>
         <Header editing={editing} setEditing={setEditing} />
       </HeaderWrapper>
       <SidebarWrapper>
-        <Sidebar />
+        <Sidebar documents={documents} setDocuments={setDocuments}/>
       </SidebarWrapper>
       <NotesWrapper>
         <NotesArea editing={editing} />

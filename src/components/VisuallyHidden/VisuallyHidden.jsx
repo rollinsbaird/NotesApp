@@ -34,7 +34,7 @@ const VisuallyHidden = ({ children, ...delegated }) => {
   return <Wrapper {...delegated}>{children}</Wrapper>;
 };
 VisuallyHidden.propTypes = {
-  children: PropTypes.any.optional,
+  children: PropTypes.any,
 };
 
 const Wrapper = styled.div`

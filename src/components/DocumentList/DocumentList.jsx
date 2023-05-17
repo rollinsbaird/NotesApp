@@ -11,7 +11,6 @@ DocumentList.propTypes = {
 
 const Wrapper = styled.ul`
   background: cream;
-  overflow-y: scroll;
   padding: 0 8px;
 `;
 

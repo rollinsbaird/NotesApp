@@ -12,7 +12,7 @@ function Header({ editing, setEditing }) {
   );
 }
 Header.propTypes = {
-  editing: PropTypes.string.isRequired,
+  editing: PropTypes.bool.isRequired,
   setEditing: PropTypes.any.isRequired,
 };
 
