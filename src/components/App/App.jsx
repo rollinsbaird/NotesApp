@@ -9,8 +9,11 @@ function App() {
   const [editing, setEditing] = React.useState(true);
 
   const [documents, setDocuments] = React.useState([
-    { name: "Document 1", id: 1 },
+    { name: "Document 1", id: 1},
+    { name: "Document 2", id: 2},
   ]);
+
+  const [currentDoc, setCurrentDoc] = React.useState(1);
 
   return (
     <Wrapper>
@@ -18,10 +21,14 @@ function App() {
         <Header editing={editing} setEditing={setEditing} />
       </HeaderWrapper>
       <SidebarWrapper>
-        <Sidebar documents={documents} setDocuments={setDocuments}/>
+        <Sidebar
+          documents={documents}
+          setDocuments={setDocuments}
+          setCurrentDoc={setCurrentDoc}
+        />
       </SidebarWrapper>
       <NotesWrapper>
-        <NotesArea editing={editing} />
+        <NotesArea id={currentDoc} editing={editing} />
       </NotesWrapper>
     </Wrapper>
   );

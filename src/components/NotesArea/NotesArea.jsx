@@ -4,8 +4,15 @@ import styled from "styled-components";
 
 import VisuallyHidden from "../VisuallyHidden";
 
-function NotesArea({ editing }) {
-  const [notes, setNotes] = React.useState("");
+import { NOTES } from "../../data";
+
+function NotesArea({ id, editing }) {
+  const [notes, setNotes] = React.useState(NOTES[id - 1].data);
+  console.log("id: ", id );
+
+  React.useEffect(() => {
+    NOTES[id].data = notes;
+  }, [id, notes]);
 
   return editing ? (
     <NotesForm>
@@ -19,7 +26,6 @@ function NotesArea({ editing }) {
         value={notes}
         onChange={(event) => {
           setNotes(event.target.value);
-          console.log(notes);
         }}
       />
     </NotesForm>
@@ -33,6 +39,7 @@ function NotesArea({ editing }) {
   );
 }
 NotesArea.propTypes = {
+  id: PropTypes.number.isRequired,
   editing: PropTypes.bool.isRequired,
 };
 

@@ -1,5 +1,5 @@
 // import React from "react";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Switch from "../Switch";
 
@@ -13,7 +13,7 @@ function Header({ editing, setEditing }) {
 }
 Header.propTypes = {
   editing: PropTypes.bool.isRequired,
-  setEditing: PropTypes.any.isRequired,
+  setEditing: PropTypes.func.isRequired,
 };
 
 const Wrapper = styled.header`

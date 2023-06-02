@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 function Switch({ editing, setEditing }) {
-  // const [checked, setChecked] = React.useState(false);
-
   const handleChange = (e) => {
     setEditing(e.target.checked);
   };
@@ -27,12 +25,13 @@ const Label = styled.label`
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  margin-right: 8px;
 `;
 
 const Slider = styled.div`
   position: relative;
   width: 60px;
-  height: 28px;
+  height: 32px;
   background: #b3b3b3;
   border-radius: 32px;
   padding: 4px;
@@ -48,7 +47,7 @@ const Slider = styled.div`
     top: 50%;
     left: 4px;
     background: white;
-    transform: translate(0, -50%);
+    transform: translate(-2px, -50%);
   }
 `;
 
@@ -56,11 +55,11 @@ const Input = styled.input`
   opacity: 0;
   position: absolute;
 
-  &:checked + ${Switch} {
+  &:checked + ${Slider} {
     background: green;
 
     &:before {
-      transform: translate(32px, -50%);
+      transform: translate(26px, -50%);
     }
   }
 `;
