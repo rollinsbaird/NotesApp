@@ -1,11 +1,11 @@
 export const NOTES = [
   {
     id: 1,
-    data: "First Document!",
+    data: "",
   },
   {
     id: 2,
-    data: "Second Document!",
+    data: "",
   },
   {
     id: 3,

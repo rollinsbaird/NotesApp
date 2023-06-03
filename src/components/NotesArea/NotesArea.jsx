@@ -8,11 +8,15 @@ import { NOTES } from "../../data";
 
 function NotesArea({ id, editing }) {
   const [notes, setNotes] = React.useState(NOTES[id - 1].data);
-  console.log("id: ", id );
 
   React.useEffect(() => {
-    NOTES[id].data = notes;
-  }, [id, notes]);
+    console.log(id);
+    setNotes(NOTES[id - 1].data);
+  }, [id]);
+
+  React.useEffect(() => {
+    NOTES[id - 1].data = notes;
+  }, [editing]);
 
   return editing ? (
     <NotesForm>
@@ -30,12 +34,12 @@ function NotesArea({ id, editing }) {
       />
     </NotesForm>
   ) : (
-    <>
+    <NotesWrapper>
       <VisuallyHidden>
         <label>Notes</label>
       </VisuallyHidden>
       <DisplayNotes>{notes}</DisplayNotes>
-    </>
+    </NotesWrapper>
   );
 }
 NotesArea.propTypes = {
@@ -54,6 +58,12 @@ const TextInput = styled.textarea`
   resize: none;
 `;
 
+const NotesWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: block;
+`;
+
 const DisplayNotes = styled.p`
   height: 95%;
   background: #3b3b3b;
@@ -61,6 +71,7 @@ const DisplayNotes = styled.p`
   font-size: large;
   white-space: pre-wrap;
   overflow-wrap: break-word;
+  overflow: auto;
 `;
 
 export default NotesArea;

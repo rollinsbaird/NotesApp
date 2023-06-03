@@ -7,13 +7,11 @@ import Sidebar from "../Sidebar";
 
 function App() {
   const [editing, setEditing] = React.useState(true);
-
+  const [currentDoc, setCurrentDoc] = React.useState(1);
   const [documents, setDocuments] = React.useState([
     { name: "Document 1", id: 1},
     { name: "Document 2", id: 2},
   ]);
-
-  const [currentDoc, setCurrentDoc] = React.useState(1);
 
   return (
     <Wrapper>
@@ -24,6 +22,7 @@ function App() {
         <Sidebar
           documents={documents}
           setDocuments={setDocuments}
+          currentDoc={currentDoc}
           setCurrentDoc={setCurrentDoc}
         />
       </SidebarWrapper>

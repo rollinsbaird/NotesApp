@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-function Document({ name, id }) {
+function Document({ name }) {
   return (
     <Wrapper>
       <Name>{name}</Name>
@@ -11,11 +11,12 @@ function Document({ name, id }) {
 }
 Document.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  // id: PropTypes.number.isRequired,
 };
 
 const Wrapper = styled.li`
-  background: gray;
+  /* background: gray; */
+  background: ${(props) => (props.current ? "blue" : "gray")};
   border-radius: 5px;
   height: 60px;
   width: 100%;
