@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -7,6 +7,10 @@ import Document from "../Document";
 import Icon from "../Icon";
 
 function Sidebar({ documents, setDocuments, currentDoc, setCurrentDoc }) {
+  const [renaming, setRenaming] = React.useState(false);
+
+  console.log(renaming);
+
   function addDoc() {
     const numDocs = documents.length + 1;
     const newDoc = {
@@ -25,12 +29,16 @@ function Sidebar({ documents, setDocuments, currentDoc, setCurrentDoc }) {
             key={doc.id}
             onClick={() => {
               setCurrentDoc(doc.id);
+            }}
+            onDoubleClick={() => {
+              setRenaming(!renaming);
             }}>
-            <StyledDocument
+            <Document
               key={doc.id}
               name={doc.name}
               id={doc.id}
               current={doc.id === currentDoc}
+              renaming={renaming}
             />
           </SelectDocument>
         ))}
@@ -53,10 +61,11 @@ const SelectDocument = styled.button`
   padding: 0;
   display: flex;
   width: 100%;
-`;
+  border-radius: 5px;
 
-const StyledDocument = styled(Document)`
-  background: ${(props) => (props.current ? "blue" : "gray")};
+  &:hover {
+    border-color: #ffffff;
+  }
 `;
 
 const Wrapper = styled.div`

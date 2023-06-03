@@ -2,21 +2,23 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-function Document({ name }) {
+function Document({ name, current, renaming }) {
   return (
-    <Wrapper>
+    <Wrapper current={current}>
       <Name>{name}</Name>
     </Wrapper>
   );
 }
 Document.propTypes = {
   name: PropTypes.string.isRequired,
+  current: PropTypes.bool.isRequired,
+  renaming: PropTypes.bool.isRequired,
   // id: PropTypes.number.isRequired,
 };
 
 const Wrapper = styled.li`
-  /* background: gray; */
-  background: ${(props) => (props.current ? "blue" : "gray")};
+  background: ${(props) => (props.current ? "#d0d0d0" : "#888888")};
+  border: none;
   border-radius: 5px;
   height: 60px;
   width: 100%;
