@@ -10,7 +10,6 @@ function NotesArea({ id, editing }) {
   const [notes, setNotes] = React.useState(NOTES[id - 1].data);
 
   React.useEffect(() => {
-    console.log(id);
     setNotes(NOTES[id - 1].data);
   }, [id]);
 

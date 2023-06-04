@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -7,9 +7,6 @@ import Document from "../Document";
 import Icon from "../Icon";
 
 function Sidebar({ documents, setDocuments, currentDoc, setCurrentDoc }) {
-  const [renaming, setRenaming] = React.useState(false);
-
-  console.log(renaming);
 
   function addDoc() {
     const numDocs = documents.length + 1;
@@ -25,22 +22,15 @@ function Sidebar({ documents, setDocuments, currentDoc, setCurrentDoc }) {
     <Wrapper>
       <DocumentList>
         {documents.map((doc) => (
-          <SelectDocument
+          <Document
             key={doc.id}
-            onClick={() => {
-              setCurrentDoc(doc.id);
-            }}
-            onDoubleClick={() => {
-              setRenaming(!renaming);
-            }}>
-            <Document
-              key={doc.id}
-              name={doc.name}
-              id={doc.id}
-              current={doc.id === currentDoc}
-              renaming={renaming}
-            />
-          </SelectDocument>
+            name={doc.name}
+            id={doc.id}
+            documents={documents}
+            setDocuments={setDocuments}
+            currentDoc={currentDoc}
+            setCurrentDoc={setCurrentDoc}
+          />
         ))}
       </DocumentList>
       <ButtonWrapper onClick={addDoc}>
@@ -55,18 +45,6 @@ Sidebar.propTypes = {
   currentDoc: PropTypes.number.isRequired,
   setCurrentDoc: PropTypes.func.isRequired,
 };
-
-const SelectDocument = styled.button`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  width: 100%;
-  border-radius: 5px;
-
-  &:hover {
-    border-color: #ffffff;
-  }
-`;
 
 const Wrapper = styled.div`
   background: cream;
