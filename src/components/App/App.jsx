@@ -2,15 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 import Header from "../Header";
-import NotesArea from "../NotesArea";
 import Sidebar from "../Sidebar";
+import NotesArea from "../NotesArea";
+import Modal from "../Modal";
 
 function App() {
   const [editing, setEditing] = React.useState(true);
   const [currentDoc, setCurrentDoc] = React.useState(1);
   const [documents, setDocuments] = React.useState([
-    { name: "Document 1", id: 1},
-    { name: "Document 2", id: 2},
+    { name: "Document 1", id: 1 },
+    { name: "Document 2", id: 2 },
   ]);
 
   return (
@@ -29,6 +30,7 @@ function App() {
       <NotesWrapper>
         <NotesArea id={currentDoc} editing={editing} />
       </NotesWrapper>
+      <Modal>Wow</Modal>
     </Wrapper>
   );
 }
